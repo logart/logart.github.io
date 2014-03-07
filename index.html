@@ -1,1 +1,249 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Asciidoctor 0.1.4" name="generator">
+<meta content="Description" name="description">
+<meta content="Artem Loginov" name="author">
+<meta content="asciidoctor, slides" name="keywords">
+<title>Using NoSQL databases as RDBMS caches</title>
+<link href="highlight/styles/vs.min.css" rel="stylesheet">
+<script src="highlight/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<link href="deck.js/core/deck.core.css" rel="stylesheet">
+<link href="deck.js/extensions/hash/deck.hash.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/scale/deck.scale.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/navigation/deck.navigation.css" media="screen" rel="stylesheet">
+<link href="deck.js/extensions/status/deck.status.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/style/web-2.0.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/transition/fade.css" media="screen" rel="stylesheet">
+<link href="deck.js/core/print.css" media="print" rel="stylesheet">
+<script src="deck.js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container article">
+<section class="slide" id="title-slide">
+<h1>Using NoSQL databases as RDBMS caches</h1>
+<span id="author">Artem Loginov</span>
+<br>
+<span id="email"><a href="mailto:artem.loginov.pub@gmail.com">artem.loginov.pub@gmail.com</a></span>
+<br>
+<span id="revnumber">version 1.0-SNAPSHOT,</span>
+<span id="revdate">20140307-1131</span>
+</section>
+<section class="slide" id="_became_an_expert_in_databases_in_99_seconds">
+<h2>Became an expert in databases in 99 seconds</h2>
+<div class="videoblock">
+<iframe allowfullscreen src="//www.youtube.com/embed/jyx8iP5tfCI?rel=0"></iframe>
+</div>
+</section>
+
+<section class="slide" id="__nosql">
+<h2>обзор NoSQL</h2>
+
+</section>
+
+<section class="slide" id="_cap">
+<h2>CAP теорема</h2>
+
+</section>
+
+<section class="slide" id="_">
+<h2>структуры данных которые используются разными бд(обзор)</h2>
+
+</section>
+
+<section class="slide" id="__2">
+<h2>почему использовать БД а не классический кеш?</h2>
+
+</section>
+
+<section class="slide" id="__3">
+<h2>почему в нашем случае нельзя перейти на носкл</h2>
+
+</section>
+
+<section class="slide" id="__4">
+<h2>примеры кода кассандра</h2>
+
+</section>
+
+<section class="slide" id="__5">
+<h2>примеры кода ориент</h2>
+
+</section>
+
+<section class="slide" id="__6">
+<h2>примеры кода редис</h2>
+
+</section>
+
+<section class="slide" id="__7">
+<h2>примеры кода монга</h2>
+
+</section>
+
+<section class="slide" id="__8">
+<h2>примеры кода кауч</h2>
+
+</section>
+
+<section class="slide" id="__9">
+<h2>проблемы консистентности</h2>
+
+</section>
+
+<section class="slide" id="__10">
+<h2>проблемы скорости</h2>
+
+</section>
+
+<section class="slide" id="__11">
+<h2>проблемы обучаемости</h2>
+
+</section>
+
+<section class="slide" id="__12">
+<h2>проблемы маппинга</h2>
+
+</section>
+
+<section class="slide" id="__13">
+<h2>проблемы готовности</h2>
+
+</section>
+
+<section class="slide" id="__14">
+<h2>проблемы сендбокса</h2>
+
+</section>
+
+<section class="slide" id="__15">
+<h2>проблемы кастомизации(ск бд)</h2>
+
+</section>
+
+<section class="slide" id="_qr">
+<h2>qr код доступа к репозиторию</h2>
+<div class="ulist">
+<ul>
+<li>(Обзор существующих NoSQL решений (mongodb, redis, couchdb, cassandra, orientdb) в качестве систем для кеширования данных)</li>
+</ul>
+</div>
+</section>
+
+<a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
+<a class="deck-next-link" href="#" title="Next">&#8594;</a>
+<p class="deck-status">
+<span class="deck-status-current"></span>
+/
+<span class="deck-status-total"></span>
+</p>
+<a class="deck-permalink" href="." title="Permalink to this slide">#</a>
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script>
+  (function($, deck, undefined) {
+    $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
+    $.deck.defaults.keys['next'] = [13, 32, 34, 39];
+  
+    $.extend(true, $[deck].defaults, {
+        countNested: false
+    });
+  
+    $.deck('.slide');
+  })(jQuery, 'deck');
+</script>
+<style>
+  .slide.canvas-image {
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-box;
+  display: box;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -moz-box-align: start;
+  -webkit-box-align: start;
+  -ms-box-align: start;
+  box-align: start;
+  -moz-box-pack: start;
+  -webkit-box-pack: start;
+  -ms-box-pack: start;
+  box-pack: start;}
+  
+  .bottom-left {
+    left: 1%;
+    bottom: 20%; }
+  
+  .top-left {
+    left: 1%;
+    top: 20%; }
+  
+  .bottom-right {
+    right: 1%;
+    bottom: 20%; }
+  
+  .top-right {
+    right: 1%;
+    top: 20%; }
+  
+  .center-up {
+    right: 50%;
+    top: 1%;
+  }
+  
+  .center-down {
+    right: 50%;
+    bottom: 1%;
+  }
+  .canvas-image .canvas-caption p {
+    text-align: center;
+    padding-top: 0;
+    padding: 0;
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: inline;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 58px;
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+    padding: 1rem;
+    color: white; }
+  kbd.keyseq { color: #555555; }
+  kbd:not(.keyseq) {
+    display: inline-block;
+    color: #222222;
+    font-size: 0.7em;
+    line-height: 1.4;
+    background-color: #F7F7F7;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px white inset;
+    margin: -0.15em 0.15em 0 0.15em;
+    padding: 0.2em 0.6em;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  kbd kbd:first-child { margin-left: 0; }
+  kbd kbd:last-child { margin-right: 0; }
+</style>
+</body>
+</html>
