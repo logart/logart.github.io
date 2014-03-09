@@ -8,6 +8,7 @@
 <meta content="Artem Loginov" name="author">
 <meta content="asciidoctor, slides" name="keywords">
 <title>Using NoSQL databases as RDBMS caches</title>
+<link href="./my-theme.css" rel="stylesheet">
 <link href="highlight/styles/vs.min.css" rel="stylesheet">
 <script src="highlight/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad()</script>
@@ -29,8 +30,13 @@
 <span id="email"><a href="mailto:artem.loginov.pub@gmail.com">artem.loginov.pub@gmail.com</a></span>
 <br>
 <span id="revnumber">version 1.0-SNAPSHOT,</span>
-<span id="revdate">20140307-1131</span>
+<span id="revdate">20140309-1830</span>
 </section>
+<section class="slide" id="_disclaimer">
+<h2>Disclaimer</h2>
+<div class="paragraph"><p>All content presented in this presentation are the views of the author and do not claim to scientific credibility. Before you use any of the knowledge obtained during the presentation is strongly recommended to check their authenticity, as well as spend some objective testing. Content presentation can be changed at any time at the request of the author.</p></div>
+</section>
+
 <section class="slide" id="_became_an_expert_in_databases_in_99_seconds">
 <h2>Became an expert in databases in 99 seconds</h2>
 <div class="videoblock">
@@ -38,93 +44,235 @@
 </div>
 </section>
 
-<section class="slide" id="__nosql">
-<h2>обзор NoSQL</h2>
+<section class="slide" id="_sql_vs_nosql">
+<h2>SQL vs NoSQL</h2>
+<div class="paragraph"><p><span class="image"><img alt="NoSQL" src="http://xamry.files.wordpress.com/2012/08/nosql-expert1.png"></span>
+todo move images to github</p></div>
+</section>
 
+<section class="slide" id="_sql_vs_nosql_2">
+<h2>SQL vs NoSQL</h2>
+<div class="ulist">
+<ul>
+<li>History</li>
+<li>Why now?</li>
+<li>Pros and cons</li>
+</ul>
+</div>
 </section>
 
 <section class="slide" id="_cap">
 <h2>CAP теорема</h2>
+<div class="paragraph"><p><span class="image"><img alt="CAP_Diagram_dist+copy" src="http://3.bp.blogspot.com/-jt3tZEGkvaw/TbzFI6DZjMI/AAAAAAAAAAw/RyvAOEpqBWo/s1600/CAP_Diagram_dist+copy.jpg"></span>
+todo move images to github</p></div>
+</section>
 
+<section class="slide" id="_why_dbms_for_caches">
+<h2>Why DBMS for caches?</h2>
+<div class="ulist">
+<ul>
+<li><p>
+Pros:<div class="ulist">
+<ul>
+<li>More control</li>
+<li><p>
+More features<div class="ulist">
+<ul>
+<li>Complex search</li>
+<li>Aggregation functions</li>
+<li>DB side logic</li>
+</ul>
+</div></p></li>
+</ul>
+</div></p></li>
+<li><p>
+Cons:<div class="ulist">
+<ul>
+<li>More complexity</li>
+<li>Require custom solutions</li>
+<li>Not really designed for cache</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_data_structures_used_by_nosql_dbms">
+<h2>Data structures used by NoSQL DBMS</h2>
+<div class="ulist">
+<ul>
+<li>Key-value (map)</li>
+<li>Column</li>
+<li>Document</li>
+<li>Graph</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_what_problems_we_will_face_in_sq_if_we_will_try_move_to_nosql">
+<h2>What problems we will face in SQ if we will try move to NoSQL?</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>Consistency</li>
+<li>Performance</li>
+<li>Learning curve</li>
+<li>Sandbox</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ulist">
+<ul>
+<li>No transactions (inconsistency)</li>
+<li>Need a lot of modifications</li>
+<li>Need strong understanding of NoSQL principles</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_consistency_issues">
+<h2>Consistency issues</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>Consistency</li>
+<li>Performance</li>
+<li>Learning curve</li>
+<li>Sandbox</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ulist">
+<ul>
+<li>Impossible to guarantee correctness of date in particular moment in time</li>
+<li>No transactions in usual understanding</li>
+<li>Need algorithm for resolving conflicts</li>
+<li>Need more trust (may be dangerous)            todo rename</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_performance_issues">
+<h2>Performance issues</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Consistency</span></li>
+<li>Performance</li>
+<li>Learning curve</li>
+<li>Sandbox</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ulist">
+<ul>
+<li>RDBMS is much more faster in general(on one node)</li>
+<li>Something else?</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_learning_curve_issues">
+<h2>Learning curve issues</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Consistency</span></li>
+<li><span class="strike">Performance</span></li>
+<li>Learning curve</li>
+<li>Sandbox</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ulist">
+<ul>
+<li>Relational algebra is regular course in almost all CS university</li>
+<li>NoSQL uses more natural way of data representation</li>
+<li>Understanding of internals of particular DB</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_sandbox_issues">
+<h2>Sandbox issues</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Consistency</span></li>
+<li><span class="strike">Performance</span></li>
+<li><span class="strike">Learning curve</span></li>
+<li>Sandbox</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ulist">
+<ul>
+<li>Is there easy way to deploy NoSQL in sandbox?</li>
+<li>Distance between productions environment and development environment became bigger</li>
+</ul>
+</div>
+</section>
+
+<section class="slide" id="_production_ready">
+<h2>Production ready?</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Consistency</span></li>
+<li><span class="strike">Performance</span></li>
+<li><span class="strike">Learning curve</span></li>
+<li><span class="strike">Sandbox</span></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paragraph"><p><span class="image"><img alt="production" src="http://www.slashgear.com/wp-content/uploads/2012/10/google-datacenter-tech-13.jpg"></span></p></div>
+</section>
+
+<section class="slide" id="_questions">
+<h2>Questions?</h2>
+<div class="paragraph"><p>qr for repo</p></div>
 </section>
 
 <section class="slide" id="_">
-<h2>структуры данных которые используются разными бд(обзор)</h2>
-
-</section>
-
-<section class="slide" id="__2">
-<h2>почему использовать БД а не классический кеш?</h2>
-
-</section>
-
-<section class="slide" id="__3">
-<h2>почему в нашем случае нельзя перейти на носкл</h2>
-
-</section>
-
-<section class="slide" id="__4">
 <h2>примеры кода кассандра</h2>
 
 </section>
 
-<section class="slide" id="__5">
+<section class="slide" id="__2">
 <h2>примеры кода ориент</h2>
 
 </section>
 
-<section class="slide" id="__6">
+<section class="slide" id="__3">
 <h2>примеры кода редис</h2>
 
 </section>
 
-<section class="slide" id="__7">
+<section class="slide" id="__4">
 <h2>примеры кода монга</h2>
 
 </section>
 
-<section class="slide" id="__8">
+<section class="slide" id="__5">
 <h2>примеры кода кауч</h2>
-
-</section>
-
-<section class="slide" id="__9">
-<h2>проблемы консистентности</h2>
-
-</section>
-
-<section class="slide" id="__10">
-<h2>проблемы скорости</h2>
-
-</section>
-
-<section class="slide" id="__11">
-<h2>проблемы обучаемости</h2>
-
-</section>
-
-<section class="slide" id="__12">
-<h2>проблемы маппинга</h2>
-
-</section>
-
-<section class="slide" id="__13">
-<h2>проблемы готовности</h2>
-
-</section>
-
-<section class="slide" id="__14">
-<h2>проблемы сендбокса</h2>
-
-</section>
-
-<section class="slide" id="__15">
-<h2>проблемы кастомизации(ск бд)</h2>
-
-</section>
-
-<section class="slide" id="_qr">
-<h2>qr код доступа к репозиторию</h2>
 <div class="ulist">
 <ul>
 <li>(Обзор существующих NoSQL решений (mongodb, redis, couchdb, cassandra, orientdb) в качестве систем для кеширования данных)</li>
