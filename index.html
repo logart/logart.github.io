@@ -30,7 +30,7 @@
 <span id="email"><a href="mailto:artem.loginov.pub@gmail.com">artem.loginov.pub@gmail.com</a></span>
 <br>
 <span id="revnumber">version 1.0-SNAPSHOT,</span>
-<span id="revdate">20140309-1830</span>
+<span id="revdate">20140312-1459</span>
 </section>
 <section class="slide" id="_disclaimer">
 <h2>Disclaimer</h2>
@@ -46,8 +46,7 @@
 
 <section class="slide" id="_sql_vs_nosql">
 <h2>SQL vs NoSQL</h2>
-<div class="paragraph"><p><span class="image"><img alt="NoSQL" src="http://xamry.files.wordpress.com/2012/08/nosql-expert1.png"></span>
-todo move images to github</p></div>
+<div class="paragraph"><p><span class="image"><img alt="NoSQL" src="http://xamry.files.wordpress.com/2012/08/nosql-expert1.png"></span></p></div>
 </section>
 
 <section class="slide" id="_sql_vs_nosql_2">
@@ -61,10 +60,14 @@ todo move images to github</p></div>
 </div>
 </section>
 
-<section class="slide" id="_cap">
-<h2>CAP теорема</h2>
-<div class="paragraph"><p><span class="image"><img alt="CAP_Diagram_dist+copy" src="http://3.bp.blogspot.com/-jt3tZEGkvaw/TbzFI6DZjMI/AAAAAAAAAAw/RyvAOEpqBWo/s1600/CAP_Diagram_dist+copy.jpg"></span>
-todo move images to github</p></div>
+<section class="slide" id="_what_to_choose">
+<h2>What to choose?</h2>
+<div class="paragraph"><p><span class="image"><img alt="choose" src="http://beta.hstor.org/storage2/e88/af4/a11/e88af4a119747125a01d8bde38f632dc.jpg"></span></p></div>
+</section>
+
+<section class="slide" id="_cap_theorem">
+<h2>CAP theorem</h2>
+<div class="paragraph"><p><span class="image"><img alt="CAP_Diagram_dist+copy" src="http://3.bp.blogspot.com/-jt3tZEGkvaw/TbzFI6DZjMI/AAAAAAAAAAw/RyvAOEpqBWo/s1600/CAP_Diagram_dist+copy.jpg"></span></p></div>
 </section>
 
 <section class="slide" id="_why_dbms_for_caches">
@@ -101,12 +104,84 @@ Cons:<div class="ulist">
 <h2>Data structures used by NoSQL DBMS</h2>
 <div class="ulist">
 <ul>
-<li>Key-value (map)</li>
-<li>Column</li>
-<li>Document</li>
-<li>Graph</li>
+<li>Key-value (map) (<em>redis</em>)</li>
+<li>Column          (<em>cassandra</em>)</li>
+<li>Document        (<em>mongodb</em>, <em>couchdb</em>)</li>
+<li>Graph           (<em>orientdb</em>)</li>
 </ul>
 </div>
+</section>
+
+<section class="slide" id="_key_value">
+<h2>Key - value</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>Key-value (map) (<em>redis</em>)</li>
+<li>Column          (<em>cassandra</em>)</li>
+<li>Document        (<em>mogodb</em>, <em>couchdb</em>)</li>
+<li>Graph           (<em>orientdb</em>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paragraph"><p><span class="image"><img alt="_scaled_keyvalue" src="http://mbed.org/media/uploads/shintamainjp/_scaled_keyvalue.png"></span></p></div>
+</section>
+
+<section class="slide" id="_column">
+<h2>Column</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Key-value (map) (<em>redis</em>)</span></li>
+<li>Column          (<em>cassandra</em>)</li>
+<li>Document        (<em>mogodb</em>, <em>couchdb</em>)</li>
+<li>Graph           (<em>orientdb</em>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paragraph"><p><span class="image"><img alt="Tcd_column_families_Figure2" src="http://wiki.toadforcloud.com/images/5/54/Tcd_column_families_Figure2.jpg"></span></p></div>
+</section>
+
+<section class="slide" id="_document">
+<h2>Document</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Key-value (map) (<em>redis</em>)</span></li>
+<li><span class="strike">Column          (<em>cassandra</em>)</span></li>
+<li>Document        (<em>mogodb</em>, <em>couchdb</em>)</li>
+<li>Graph           (<em>orientdb</em>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paragraph"><p><span class="image"><img alt="29967" src="https://addons.cdn.mozilla.net/img/uploads/previews/full/29/29967.png"></span></p></div>
+</section>
+
+<section class="slide" id="_graph">
+<h2>Graph</h2>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li><span class="strike">Key-value (map) (<em>redis</em>)</span></li>
+<li><span class="strike">Column          (<em>cassandra</em>)</span></li>
+<li><span class="strike">Document        (<em>mogodb</em>, <em>couchdb</em>)</span></li>
+<li>Graph           (<em>orientdb</em>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="paragraph"><p><span class="image"><img alt="blog0116_graphcities" src="http://www.neotechnology.com/wp-content/uploads/2013/01/blog0116_graphcities.png"></span></p></div>
 </section>
 
 <section class="slide" id="_what_problems_we_will_face_in_sq_if_we_will_try_move_to_nosql">
@@ -153,7 +228,6 @@ Cons:<div class="ulist">
 <li>Impossible to guarantee correctness of date in particular moment in time</li>
 <li>No transactions in usual understanding</li>
 <li>Need algorithm for resolving conflicts</li>
-<li>Need more trust (may be dangerous)            todo rename</li>
 </ul>
 </div>
 </section>
@@ -176,7 +250,6 @@ Cons:<div class="ulist">
 <div class="ulist">
 <ul>
 <li>RDBMS is much more faster in general(on one node)</li>
-<li>Something else?</li>
 </ul>
 </div>
 </section>
@@ -248,36 +321,7 @@ Cons:<div class="ulist">
 
 <section class="slide" id="_questions">
 <h2>Questions?</h2>
-<div class="paragraph"><p>qr for repo</p></div>
-</section>
-
-<section class="slide" id="_">
-<h2>примеры кода кассандра</h2>
-
-</section>
-
-<section class="slide" id="__2">
-<h2>примеры кода ориент</h2>
-
-</section>
-
-<section class="slide" id="__3">
-<h2>примеры кода редис</h2>
-
-</section>
-
-<section class="slide" id="__4">
-<h2>примеры кода монга</h2>
-
-</section>
-
-<section class="slide" id="__5">
-<h2>примеры кода кауч</h2>
-<div class="ulist">
-<ul>
-<li>(Обзор существующих NoSQL решений (mongodb, redis, couchdb, cassandra, orientdb) в качестве систем для кеширования данных)</li>
-</ul>
-</div>
+<div class="paragraph"><p><span class="image"><img alt="qr" src="data:image/png:base64,"></span></p></div>
 </section>
 
 <a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
